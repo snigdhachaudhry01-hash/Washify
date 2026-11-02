@@ -1,4 +1,4 @@
-/**
+git /**
  * FOLDLINE / WASHIFY - Campus Laundry Management System
  * Production Frontend Implementation based on PRD v1.0 & Figma/Stitch specifications.
  */
@@ -6,12 +6,13 @@
 // Initial Seed Data matching Figma and PDF Screenshots exactly
 const INITIAL_DATA = {
   currentUser: {
-    id: 'staff-01',
-    name: 'Anika Rao',
+    id: 'staff-00',
+    name: 'Vikas Nair',
     role: 'Owner / Admin',
-    avatar: 'AR'
+    avatar: 'VN'
   },
   staffUsers: [
+    { id: 'staff-00', name: 'Vikas Nair', role: 'Owner / Admin', avatar: 'VN' },
     { id: 'staff-01', name: 'Anika Rao', role: 'Owner / Admin', avatar: 'AR' },
     { id: 'staff-02', name: 'Sunil K.', role: 'Laundry Staff', avatar: 'SK' },
     { id: 'staff-03', name: 'Meera Nair', role: 'Laundry Staff', avatar: 'MN' }
@@ -716,6 +717,141 @@ const INITIAL_DATA = {
     { id: 'ACT-01', text: 'ORD-1040 handed over to Meera Joshi', time: '11:12 am', staff: 'Anika Rao', icon: 'check-circle' },
     { id: 'ACT-02', text: 'ORD-1058 received from Arun Shah · 4.50 kg', time: '10:42 am', staff: 'Anika Rao', icon: 'package-plus' },
     { id: 'ACT-03', text: 'ORD-1042 marked ready for Riya S.', time: '10:20 am', staff: 'Meera Nair', icon: 'sparkles' }
+  ],
+  executiveStats: {
+    facilityName: 'Facility Hub 01 (Central)',
+    activeCycle: 'Oct 2026 (Live)',
+    hubId: 'Campus Hub #04',
+    mtdGrossRevenue: 142850,
+    grossRevenueFormatted: '₹1,42,850',
+    grossRevenueGrowth: '+18.4%',
+    revenueTarget: 135000,
+    revenuePacing: '105.8% of pacing',
+    processedOutputKg: 4820.5,
+    outputGrowth: '+14.2%',
+    slaCompliance: 98.4,
+    slaBenchmark: 95.0,
+    activeSubscribers: 642,
+    newSubscribersThisWeek: 38,
+    dormBacklogs: 0,
+    weeklyAvgKg: 688.6,
+    netBalanceKg: 48.0
+  },
+  packagesConfig: [
+    {
+      id: 'TIER-SILVER',
+      name: 'Silver Basic',
+      category: 'Standard',
+      badgeClass: 'bg-surface-container text-secondary font-medium',
+      quotaKg: 25.0,
+      ratePerKg: 45.0,
+      totalPrice: 1125.0,
+      durationLabel: 'per student / mo',
+      subscribedCount: 218,
+      popular: false
+    },
+    {
+      id: 'TIER-GOLD',
+      name: 'Gold Heavy',
+      category: 'Priority',
+      badgeClass: 'bg-primary-fixed text-on-primary-fixed font-semibold',
+      quotaKg: 40.0,
+      ratePerKg: 40.0,
+      totalPrice: 1600.0,
+      durationLabel: 'per student / mo',
+      subscribedCount: 496,
+      popular: true
+    },
+    {
+      id: 'TIER-SEMESTER',
+      name: 'Semester Saver',
+      category: 'Bulk',
+      badgeClass: 'bg-surface-container text-secondary font-medium',
+      quotaKg: 75.0,
+      ratePerKg: 36.0,
+      totalPrice: 2700.0,
+      durationLabel: 'per semester',
+      subscribedCount: 128,
+      popular: false
+    },
+    {
+      id: 'TIER-CAMPUS90',
+      name: 'Campus 90 Prepaid',
+      category: 'Hostel Regular',
+      badgeClass: 'bg-teal-50 text-teal-800 font-semibold',
+      quotaKg: 90.0,
+      ratePerKg: 50.0,
+      totalPrice: 4500.0,
+      durationLabel: 'full semester',
+      subscribedCount: 84,
+      popular: false
+    }
+  ],
+  shiftSupervisors: [
+    {
+      id: 'SUP-01',
+      name: 'Devon Vance',
+      shiftName: 'Morning',
+      timeSlot: '06:00 - 14:00',
+      icon: 'wb_sunny',
+      ordersCount: 512,
+      outputKg: 2284.0,
+      slaRate: 98.2,
+      orderRefRange: 'Order #012410 - #012922',
+      tareDiscrepancy: '0.02%',
+      tareStatus: 'Optimal',
+      tareStatusColor: 'text-primary'
+    },
+    {
+      id: 'SUP-02',
+      name: 'Marcus Sterling',
+      shiftName: 'Evening',
+      timeSlot: '14:00 - 22:00',
+      icon: 'wb_twilight',
+      ordersCount: 438,
+      outputKg: 1940.5,
+      slaRate: 92.4,
+      orderRefRange: 'Order #142410 - #142848',
+      tareDiscrepancy: '0.05%',
+      tareStatus: 'Review',
+      tareStatusColor: 'text-amber-600'
+    },
+    {
+      id: 'SUP-03',
+      name: 'Althea Ramos',
+      shiftName: 'Night / Maint',
+      timeSlot: '22:00 - 06:00',
+      icon: 'bedtime',
+      ordersCount: 134,
+      outputKg: 596.0,
+      slaRate: 96.0,
+      orderRefRange: 'Order #204101 - #204235',
+      tareDiscrepancy: '0.01%',
+      tareStatus: 'Pristine',
+      tareStatusColor: 'text-primary'
+    }
+  ],
+  throughputWeekly: [
+    { day: 'Mon', dayShort: 'M', intakeKg: 620.0, dispatchKg: 570.0, intakePct: 65, dispatchPct: 60 },
+    { day: 'Tue', dayShort: 'T', intakeKg: 745.0, dispatchKg: 710.0, intakePct: 78, dispatchPct: 74 },
+    { day: 'Wed', dayShort: 'W', intakeKg: 810.0, dispatchKg: 785.0, intakePct: 85, dispatchPct: 82 },
+    { day: 'Thu', dayShort: 'T', intakeKg: 880.0, dispatchKg: 860.0, intakePct: 92, dispatchPct: 90 },
+    { day: 'Fri', dayShort: 'F', intakeKg: 910.0, dispatchKg: 870.0, intakePct: 95, dispatchPct: 91 },
+    { day: 'Sat', dayShort: 'S', intakeKg: 670.0, dispatchKg: 725.0, intakePct: 70, dispatchPct: 76 },
+    { day: 'Sun', dayShort: 'S', intakeKg: 955.0, dispatchKg: 920.0, intakePct: 100, dispatchPct: 96, peak: true }
+  ],
+  auditLogs: [
+    { id: 'AUD-901', time: '11:15 am', shift: 'Morning', supervisor: 'Devon Vance', type: 'Tare Check', description: 'Scale calibration check #4 verified at 06:15 am', status: 'Verified', variance: '0.00 kg' },
+    { id: 'AUD-902', time: '10:45 am', shift: 'Morning', supervisor: 'Devon Vance', type: 'Tare Override', description: 'Manual tare re-zeroed for bulk bin intake #ORD-1042', status: 'Approved', variance: '+0.04 kg' },
+    { id: 'AUD-903', time: '09:20 am', shift: 'Morning', supervisor: 'Devon Vance', type: 'Bag Weight', description: 'Heavy canvas laundry bag deduction standard tare (0.25 kg)', status: 'Verified', variance: '0.00 kg' },
+    { id: 'AUD-904', time: 'Yesterday 08:30 pm', shift: 'Evening', supervisor: 'Marcus Sterling', type: 'Tare Discrepancy', description: 'Arun Shah CUS-0086 dry weight recount variance flagged', status: 'Review Flag', variance: '+0.12 kg' },
+    { id: 'AUD-905', time: 'Yesterday 04:10 pm', shift: 'Evening', supervisor: 'Marcus Sterling', type: 'Re-Weigh', description: 'Riya S. ORD-1042 delivery bag verification matched', status: 'Verified', variance: '0.00 kg' }
+  ],
+  payoutLedgers: [
+    { id: 'PAY-108', date: '23 Oct 2026', method: 'Razorpay UPI Batch #41', gross: 54200, fee: 1084, net: 53116, status: 'Settled to HDFC **4819' },
+    { id: 'PAY-107', date: '22 Oct 2026', method: 'Razorpay UPI Batch #40', gross: 48900, fee: 978, net: 47922, status: 'Settled to HDFC **4819' },
+    { id: 'PAY-106', date: '21 Oct 2026', method: 'Cart Terminal Handover Cash', gross: 14500, fee: 0, net: 14500, status: 'Deposited to Safe' },
+    { id: 'PAY-105', date: '20 Oct 2026', method: 'Campus Monthly Advance', gross: 25250, fee: 0, net: 25250, status: 'Credited' }
   ]
 };
 
@@ -731,6 +867,17 @@ class AppStore {
       }
     } else {
       this.state = JSON.parse(JSON.stringify(INITIAL_DATA));
+    }
+
+    // Ensure schema migration if cached from previous version
+    if (!this.state.packagesConfig) this.state.packagesConfig = JSON.parse(JSON.stringify(INITIAL_DATA.packagesConfig));
+    if (!this.state.shiftSupervisors) this.state.shiftSupervisors = JSON.parse(JSON.stringify(INITIAL_DATA.shiftSupervisors));
+    if (!this.state.throughputWeekly) this.state.throughputWeekly = JSON.parse(JSON.stringify(INITIAL_DATA.throughputWeekly));
+    if (!this.state.executiveStats) this.state.executiveStats = JSON.parse(JSON.stringify(INITIAL_DATA.executiveStats));
+    if (!this.state.auditLogs) this.state.auditLogs = JSON.parse(JSON.stringify(INITIAL_DATA.auditLogs));
+    if (!this.state.payoutLedgers) this.state.payoutLedgers = JSON.parse(JSON.stringify(INITIAL_DATA.payoutLedgers));
+    if (!this.state.staffUsers.find(u => u.name === 'Vikas Nair')) {
+      this.state.staffUsers.unshift({ id: 'staff-00', name: 'Vikas Nair', role: 'Owner / Admin', avatar: 'VN' });
     }
 
     // UI Runtime State (non-persistent)
@@ -1020,6 +1167,72 @@ class AppStore {
     this.save();
 
     return customerId;
+  }
+
+  // Quota Packages & Pricing Management (from Washify Ops)
+  publishNewQuotaPackage({ name, quotaKg, ratePerKg, durationLabel, category, popular }) {
+    const kg = parseFloat(quotaKg) || 50.0;
+    const rate = parseFloat(ratePerKg) || 40.0;
+    const newTier = {
+      id: 'TIER-' + Date.now().toString().slice(-6),
+      name: name || 'Custom Plan',
+      category: category || 'Custom',
+      badgeClass: 'bg-primary-fixed text-on-primary-fixed font-semibold',
+      quotaKg: kg,
+      ratePerKg: rate,
+      totalPrice: Math.round(kg * rate),
+      durationLabel: durationLabel || 'per student / mo',
+      subscribedCount: 0,
+      popular: !!popular
+    };
+    this.state.packagesConfig.push(newTier);
+    this.save();
+    return newTier;
+  }
+
+  updatePackageRate(tierId, newRate, newQuota) {
+    const tier = this.state.packagesConfig.find(p => p.id === tierId);
+    if (tier) {
+      if (newRate !== undefined) tier.ratePerKg = parseFloat(newRate);
+      if (newQuota !== undefined) tier.quotaKg = parseFloat(newQuota);
+      tier.totalPrice = Math.round(tier.quotaKg * tier.ratePerKg);
+      this.save();
+    }
+  }
+
+  exportAuditReportCSV() {
+    let csv = 'Audit ID,Time,Shift,Supervisor,Type,Description,Status,Tare Variance\n';
+    this.state.auditLogs.forEach(a => {
+      csv += `"${a.id}","${a.time}","${a.shift}","${a.supervisor}","${a.type}","${a.description}","${a.status}","${a.variance}"\n`;
+    });
+    csv += '\nShift Performance Breakdown\n';
+    csv += 'Shift,Supervisor,Time Window,Orders,Output (KG),SLA Rate,Tare Discrepancy,Status\n';
+    this.state.shiftSupervisors.forEach(s => {
+      csv += `"${s.shiftName}","${s.name}","${s.timeSlot}",${s.ordersCount},${s.outputKg.toFixed(1)},"${s.slaRate}%","${s.tareDiscrepancy}","${s.tareStatus}"\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `washify_shift_audit_${Date.now()}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Shift Audit & Exception CSV exported', 'success');
+  }
+
+  exportPayoutReconciliationCSV() {
+    let csv = 'Batch ID,Date,Payment Method,Gross Amount (INR),Platform Fee (INR),Net Settled (INR),Status\n';
+    this.state.payoutLedgers.forEach(p => {
+      csv += `"${p.id}","${p.date}","${p.method}",${p.gross},${p.fee},${p.net},"${p.status}"\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `washify_payout_reconciliation_${Date.now()}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Facility Payout Ledger CSV exported', 'success');
   }
 }
 
@@ -2702,6 +2915,815 @@ function renderSettings() {
       </div>
     </div>
   `;
+}
+
+// ----------------------------------------------------
+// WASHIFY OPS - OWNER SHIFT ANALYTICS & THROUGHPUT VIEW
+// ----------------------------------------------------
+let selectedDayThroughput = null;
+
+function setThroughputDay(dayIndex) {
+  selectedDayThroughput = store.state.throughputWeekly[dayIndex];
+  render();
+}
+
+function renderAnalytics() {
+  const isMobile = store.deviceMode === 'mobile';
+  const stats = store.state.executiveStats;
+  const supervisors = store.state.shiftSupervisors;
+  const weekly = store.state.throughputWeekly;
+
+  return `
+    <div class="max-w-4xl mx-auto space-y-5 animate-fade-in pb-16">
+      <!-- Owner Portal Persona Anchor -->
+      <section class="flex items-center justify-between bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center font-bold text-base shadow-sm">
+            VN
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base font-bold text-slate-900 leading-tight">Vikas Nair</h1>
+              <span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container text-[11px] font-bold">OWNER</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">Owner Portal • Shift Analytics &amp; Audits</p>
+          </div>
+        </div>
+        <div class="text-right flex items-center gap-2">
+          <span class="hidden sm:inline-block px-2.5 py-1 rounded bg-surface-container-low text-secondary text-xs font-mono">
+            ${stats.hubId}
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/20 text-primary text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Shift Active
+          </span>
+        </div>
+      </section>
+
+      <!-- Facility Overview Bento Grid -->
+      <section class="space-y-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold text-slate-900 tracking-tight">Facility Overview</h2>
+          <span class="text-xs text-slate-500 font-mono">Current Billing Cycle: ${stats.activeCycle}</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Revenue Card (Primary Impact) -->
+          <div class="sm:col-span-2 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 bottom-0 w-1.5 bg-primary"></div>
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">MTD Gross Revenue</p>
+                <p class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1 font-mono">${stats.grossRevenueFormatted}</p>
+              </div>
+              <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary-fixed/40 text-primary text-xs font-bold">
+                <span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                ${stats.grossRevenueGrowth}
+              </span>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span>Target: ₹${stats.revenueTarget.toLocaleString('en-IN')}</span>
+              <span class="text-primary font-bold">${stats.revenuePacing}</span>
+            </div>
+          </div>
+
+          <!-- Output Metric Card -->
+          <div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <span class="material-symbols-outlined text-primary text-2xl" data-icon="scale">scale</span>
+              <span class="text-xs text-primary font-bold font-mono">${stats.outputGrowth}</span>
+            </div>
+            <div class="mt-2">
+              <p class="text-xs text-slate-500">Gross Output</p>
+              <div class="mt-1 flex items-baseline gap-1.5">
+                <span class="text-2xl font-bold text-slate-900 font-mono">${stats.processedOutputKg.toFixed(1)}</span>
+                <span class="text-xs text-slate-500 uppercase font-semibold">KG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLA Compliance Card -->
+          <div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 shadow-sm flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <span class="material-symbols-outlined text-primary text-2xl" data-icon="verified">verified</span>
+              <span class="text-xs text-slate-500 font-medium">Target: ${stats.slaBenchmark}%</span>
+            </div>
+            <div class="mt-2">
+              <p class="text-xs text-slate-500">SLA Compliance</p>
+              <div class="mt-1 text-2xl font-bold text-slate-900 font-mono">${stats.slaCompliance}%</div>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-2">
+              <div class="bg-primary h-full rounded-full" style="width: ${stats.slaCompliance}%"></div>
+            </div>
+          </div>
+
+          <!-- Active Enrolled Students Card -->
+          <div class="sm:col-span-2 lg:col-span-4 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined" data-icon="groups">groups</span>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500">Active Enrolled Students</p>
+                <p class="text-lg font-bold text-slate-900">${stats.activeSubscribers} <span class="text-xs text-slate-400 font-normal">subscribers (+${stats.newSubscribersThisWeek} this week)</span></p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200">
+                0 Dorm Backlogs
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Intake vs Dispatch Weekly Chart -->
+      <section class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-5 shadow-sm space-y-4">
+        <div class="flex items-start justify-between flex-wrap gap-2">
+          <div>
+            <h2 class="text-base font-bold text-slate-900">Daily Throughput</h2>
+            <p class="text-xs text-slate-500">Intake vs Dispatch Volume (KG) • Weekly Cycle</p>
+          </div>
+          <div class="flex items-center gap-4 text-xs font-medium">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-sm bg-[#008378]"></span>
+              <span class="text-slate-600">Intake Volume</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-sm bg-[#cbdbf5]"></span>
+              <span class="text-slate-600">Dispatch Volume</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Comparative Bars (Mon - Sun) -->
+        <div class="pt-2">
+          <div class="h-44 flex items-end justify-between gap-2 border-b border-slate-200 pb-2">
+            ${weekly.map((d, idx) => `
+              <div 
+                onclick="setThroughputDay(${idx})"
+                class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end cursor-pointer group hover:bg-slate-50/80 rounded-lg p-1 transition"
+                title="${d.day}: Intake ${d.intakeKg} kg, Dispatch ${d.dispatchKg} kg"
+              >
+                <div class="w-full flex items-end justify-center gap-1.5 h-32">
+                  <div class="w-3 sm:w-4 bg-[#008378] hover:bg-teal-700 rounded-t-sm transition-all duration-300" style="height: ${d.intakePct}%;"></div>
+                  <div class="w-3 sm:w-4 bg-[#cbdbf5] hover:bg-slate-400 rounded-t-sm transition-all duration-300" style="height: ${d.dispatchPct}%;"></div>
+                </div>
+                <span class="text-xs font-semibold ${d.peak ? 'text-primary font-bold' : 'text-slate-500'} group-hover:text-primary">${d.dayShort}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
+            <span>Weekly Avg: <strong class="text-slate-800 font-mono">${stats.weeklyAvgKg} KG / Day</strong></span>
+            <span>Net Balance: <strong class="text-primary font-mono">+${stats.netBalanceKg} KG (Buffered)</strong></span>
+          </div>
+
+          ${selectedDayThroughput ? `
+            <div class="mt-3 p-3 rounded-lg bg-teal-50 border border-teal-200 flex items-center justify-between animate-fade-in text-xs">
+              <div>
+                <span class="font-bold text-teal-900">${selectedDayThroughput.day} Readout:</span>
+                <span class="text-teal-800 ml-2">Intake: <strong>${selectedDayThroughput.intakeKg} KG</strong> | Dispatch: <strong>${selectedDayThroughput.dispatchKg} KG</strong></span>
+              </div>
+              <button onclick="selectedDayThroughput = null; render();" class="text-teal-600 hover:text-teal-900 font-bold">✕ Close</button>
+            </div>
+          ` : ''}
+        </div>
+      </section>
+
+      <!-- Shift-wise Supervisor Productivity Cards -->
+      <section class="space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-bold text-slate-900 tracking-tight">Shift Productivity</h2>
+            <p class="text-xs text-slate-500">Daily Output &amp; Floor Supervisor Governance</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold font-mono">
+            3 Active Shifts
+          </span>
+        </div>
+
+        <div class="space-y-3">
+          ${supervisors.map(sup => `
+            <article class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl overflow-hidden shadow-sm relative pl-1 hover:shadow-md transition">
+              <div class="absolute left-0 top-0 bottom-0 w-1.5 ${sup.shiftName === 'Morning' ? 'bg-primary' : sup.shiftName === 'Evening' ? 'bg-[#565e74]' : 'bg-[#008378]'}"></div>
+              <div class="p-4 space-y-3">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h3 class="text-base font-bold text-slate-900">${sup.name}</h3>
+                    <p class="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary" data-icon="${sup.icon}">${sup.icon}</span>
+                      <span>${sup.shiftName} Shift • ${sup.timeSlot}</span>
+                    </p>
+                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">${sup.orderRefRange}</p>
+                  </div>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-primary-fixed/40 text-primary text-xs font-bold">
+                    SLA ${sup.slaRate}%
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                  <div class="bg-slate-50 rounded-lg p-2.5 px-3">
+                    <span class="text-[11px] text-slate-500 block uppercase font-medium">Shift Output</span>
+                    <span class="text-sm font-bold text-slate-900 font-mono">${sup.ordersCount} Orders • ${sup.outputKg.toFixed(1)} KG</span>
+                  </div>
+                  <div class="bg-slate-50 rounded-lg p-2.5 px-3 flex flex-col justify-center">
+                    <span class="text-[11px] text-slate-500 block uppercase font-medium">Tare Discrepancy</span>
+                    <span class="text-sm font-bold ${sup.tareStatusColor} font-mono">
+                      ${sup.tareDiscrepancy} <span class="text-[11px] font-normal text-slate-500">(${sup.tareStatus})</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+
+      <!-- Owner Audits & Governance Controls -->
+      <section class="space-y-3 pt-2">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold text-slate-900 tracking-tight">Owner Audits &amp; Governance</h2>
+          <span class="text-xs text-slate-500 font-mono">Encrypted Audit Hash</span>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2.5">
+          <button onclick="store.exportAuditReportCSV()" class="w-full bg-surface-container-lowest hover:bg-slate-50 border border-outline-variant/70 text-slate-900 rounded-xl p-4 text-left flex items-center justify-between transition active:scale-98 shadow-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined" data-icon="download">download</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Export Audit Report (CSV / PDF)</p>
+                <p class="text-xs text-slate-500">Complete shift logs with timestamp verifications &amp; tare hashes</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-400" data-icon="chevron_right">chevron_right</span>
+          </button>
+
+          <button onclick="openAuditModal()" class="w-full bg-surface-container-lowest hover:bg-slate-50 border border-outline-variant/70 text-slate-900 rounded-xl p-4 text-left flex items-center justify-between transition active:scale-98 shadow-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Audit Shift Logs &amp; Tare Exceptions</p>
+                <p class="text-xs text-slate-500">Review overrides, manual tare changes &amp; re-weigh records</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-400" data-icon="chevron_right">chevron_right</span>
+          </button>
+
+          <button onclick="openPayoutModal()" class="w-full bg-surface-container-lowest hover:bg-slate-50 border border-outline-variant/70 text-slate-900 rounded-xl p-4 text-left flex items-center justify-between transition active:scale-98 shadow-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Facility Ledgers &amp; Payout Reconciliation</p>
+                <p class="text-xs text-slate-500">Campus settlement breakdown &amp; merchant transfers</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-400" data-icon="chevron_right">chevron_right</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+// ----------------------------------------------------
+// WASHIFY OPS - QUOTA PACKAGES & PRICING CONFIG VIEW
+// ----------------------------------------------------
+function updatePackageBuilderCalc() {
+  const weightInput = document.getElementById('pkg-weight-input');
+  const rateInput = document.getElementById('pkg-rate-input');
+  const priceOutput = document.getElementById('pkg-price-calc-output');
+  if (weightInput && rateInput && priceOutput) {
+    const w = parseFloat(weightInput.value) || 0;
+    const r = parseFloat(rateInput.value) || 0;
+    const total = Math.round(w * r);
+    priceOutput.textContent = '₹' + total.toLocaleString('en-IN');
+  }
+}
+
+function publishBuilderPackage() {
+  const weightInput = document.getElementById('pkg-weight-input');
+  const rateInput = document.getElementById('pkg-rate-input');
+  const nameInput = document.getElementById('pkg-name-input');
+
+  const w = parseFloat(weightInput?.value) || 50;
+  const r = parseFloat(rateInput?.value) || 38;
+  const name = nameInput?.value.trim() || 'New Quota Tier';
+
+  store.publishNewQuotaPackage({
+    name: name,
+    quotaKg: w,
+    ratePerKg: r,
+    durationLabel: 'per student / mo',
+    category: 'Custom Quota',
+    popular: false
+  });
+
+  showToast(`Package "${name}" published successfully!`, 'success');
+  render();
+}
+
+function renderPackages() {
+  const stats = store.state.executiveStats;
+  const packages = store.state.packagesConfig;
+
+  return `
+    <div class="max-w-4xl mx-auto space-y-5 animate-fade-in pb-16">
+      <!-- Top Title & Live Status -->
+      <header class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-2xl" data-icon="inventory_2">inventory_2</span>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-slate-900 leading-tight">Quota Packages &amp; Pricing Control</h1>
+            <p class="text-xs text-slate-500 font-mono">Owner Portal • ${stats.facilityName}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary-fixed/40 text-primary border border-primary/20">
+            Shift Active
+          </span>
+          <button onclick="navigateTo('settings')" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 transition">
+            <span class="material-symbols-outlined" data-icon="tune">tune</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Facility Context Strip -->
+      <div class="bg-white px-4 py-2.5 rounded-xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[18px]" data-icon="domain">domain</span>
+          <span class="text-xs font-semibold text-slate-800">${stats.facilityName}</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          <span class="text-[11px] text-primary font-bold tracking-wider">${stats.activeCycle}</span>
+        </div>
+      </div>
+
+      <!-- Executive Overview Bento -->
+      <section class="space-y-2.5">
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold text-slate-900">Executive Overview</h2>
+          <span class="text-xs text-slate-400 flex items-center gap-1 font-mono">
+            <span class="material-symbols-outlined text-[14px]" data-icon="sync">sync</span> 3m ago
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="sm:col-span-2 bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 left-0 bottom-0 w-1.5 bg-primary"></div>
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">MTD Gross Revenue</span>
+              <span class="inline-flex items-center text-xs font-bold text-primary bg-primary-fixed/40 px-2 py-0.5 rounded-full">
+                <span class="material-symbols-outlined text-[12px] mr-0.5" data-icon="trending_up">trending_up</span> ${stats.grossRevenueGrowth}
+              </span>
+            </div>
+            <div class="mt-2">
+              <span class="text-3xl font-extrabold text-slate-900 font-mono">${stats.grossRevenueFormatted}</span>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+              <span>Processed Output:</span>
+              <span class="font-bold text-slate-900 font-mono">${stats.processedOutputKg.toFixed(1)} KG <span class="text-primary font-normal">(${stats.outputGrowth})</span></span>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-semibold uppercase">SLA Compliance</span>
+              <span class="material-symbols-outlined text-primary text-xl" data-icon="verified">verified</span>
+            </div>
+            <div class="my-2">
+              <div class="text-2xl font-extrabold text-slate-900 font-mono">${stats.slaCompliance}%</div>
+              <div class="text-[11px] text-primary font-semibold mt-0.5">Target: ${stats.slaBenchmark}%</div>
+            </div>
+            <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: ${stats.slaCompliance}%"></div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-semibold uppercase">Active Subscribers</span>
+              <span class="material-symbols-outlined text-slate-400 text-xl" data-icon="group">group</span>
+            </div>
+            <div class="my-2">
+              <div class="text-2xl font-extrabold text-slate-900 font-mono">${stats.activeSubscribers}</div>
+              <div class="text-[11px] text-slate-400 font-medium mt-0.5">Students enrolled</div>
+            </div>
+            <div class="flex items-center gap-1 text-[11px] text-primary font-bold font-mono">
+              <span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span> ${stats.newSubscribersThisWeek} this week
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Subscription Packages & Pricing Configuration -->
+      <section class="space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div>
+            <h2 class="text-base font-bold text-slate-900">Quota Packages</h2>
+            <p class="text-xs text-slate-500">Direct Pricing &amp; Student Tier Control</p>
+          </div>
+          <button onclick="document.getElementById('quick-pkg-builder')?.scrollIntoView({ behavior: 'smooth' });" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary hover:bg-[#005049] text-white text-xs font-bold transition shadow-sm">
+            <span class="material-symbols-outlined text-[16px]" data-icon="add">add</span> Add New Plan
+          </button>
+        </div>
+
+        <!-- Active Quota Package Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          ${packages.map(p => `
+            <div class="bg-white rounded-xl p-4 border ${p.popular ? 'border-2 border-primary shadow-md' : 'border-slate-200 shadow-sm'} relative flex flex-col justify-between">
+              ${p.popular ? `
+                <div class="absolute -top-2.5 right-4 bg-primary text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                  Most Popular
+                </div>
+              ` : ''}
+              <div>
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-base">${p.name}</span>
+                      <span class="px-2 py-0.5 rounded-full text-[10px] ${p.badgeClass}">${p.category}</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1 font-mono">${p.quotaKg.toFixed(1)} KG Quota • ₹${p.ratePerKg} / KG</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xl font-extrabold text-primary font-mono">₹${p.totalPrice.toLocaleString('en-IN')}</span>
+                    <p class="text-[10px] text-slate-400">${p.durationLabel}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="flex items-center gap-1.5 text-slate-500 text-[11px]">
+                  <span class="material-symbols-outlined text-[16px] text-primary" data-icon="school">school</span>
+                  <strong class="text-slate-800 font-mono">${p.subscribedCount || 0}</strong> Students
+                </span>
+                <button onclick="openEditRateModal('${p.id}')" class="text-primary font-bold text-xs flex items-center gap-1 hover:underline">
+                  <span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span> Edit Rates
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Quick Package Calculator / Creator Box -->
+        <div id="quick-pkg-builder" class="bg-surface-container-low rounded-2xl p-5 border border-outline-variant/50 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-900 flex items-center gap-2 text-sm">
+              <span class="material-symbols-outlined text-primary text-xl" data-icon="calculate">calculate</span>
+              Quick Package Builder
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Auto-calculator Engine</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="pkg-name-input">PLAN NAME</label>
+              <input id="pkg-name-input" type="text" value="Monsoon Flexi" class="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-900 focus:outline-none focus:border-primary" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="pkg-weight-input">TOTAL WEIGHT (KG)</label>
+              <div class="relative">
+                <input id="pkg-weight-input" type="number" value="50" oninput="updatePackageBuilderCalc()" class="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-900 font-mono focus:outline-none focus:border-primary" />
+                <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-bold">KG</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="pkg-rate-input">RATE PER KG (₹)</label>
+              <div class="relative">
+                <input id="pkg-rate-input" type="number" value="38" oninput="updatePackageBuilderCalc()" class="w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-900 font-mono focus:outline-none focus:border-primary" />
+                <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-bold">₹/KG</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-500">Auto Calculated Price Readout:</span>
+              <div class="text-[11px] text-slate-400 font-mono">Live calculation (Weight × Rate)</div>
+            </div>
+            <span id="pkg-price-calc-output" class="text-2xl font-extrabold text-primary font-mono">₹1,900</span>
+          </div>
+
+          <button onclick="publishBuilderPackage()" class="w-full h-12 bg-primary hover:bg-[#005049] text-white font-bold rounded-xl flex items-center justify-center gap-2 active:scale-98 transition shadow-md" type="button">
+            <span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+            Save &amp; Publish Plan
+          </button>
+        </div>
+      </section>
+
+      <!-- Owner Operational Controls -->
+      <section class="space-y-3 pt-2">
+        <h2 class="text-base font-bold text-slate-900">Owner Audits &amp; Governance</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <button onclick="store.exportAuditReportCSV()" class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-slate-50 transition shadow-sm text-left">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" data-icon="download">download</span>
+              <span class="text-xs font-bold text-slate-800">Export Audit Report (CSV)</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-400 text-sm" data-icon="chevron_right">chevron_right</span>
+          </button>
+
+          <button onclick="openAuditModal()" class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-slate-50 transition shadow-sm text-left">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" data-icon="assignment">assignment</span>
+              <span class="text-xs font-bold text-slate-800">Audit Shift Logs &amp; Exceptions</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-400 text-sm" data-icon="chevron_right">chevron_right</span>
+          </button>
+
+          <button onclick="openPayoutModal()" class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:bg-slate-50 transition shadow-sm text-left">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+              <span class="text-xs font-bold text-slate-800">Facility Ledgers &amp; Payouts</span>
+            </div>
+            <span class="material-symbols-outlined text-slate-400 text-sm" data-icon="chevron_right">chevron_right</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+// ----------------------------------------------------
+// AUDIT & PAYOUT & EDIT RATE MODAL HANDLERS
+// ----------------------------------------------------
+function openAuditModal() {
+  const modal = document.getElementById('audit-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    renderAuditModalContent();
+  }
+}
+
+function closeAuditModal() {
+  const modal = document.getElementById('audit-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function renderAuditModalContent() {
+  const container = document.getElementById('audit-modal-body');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center font-bold">
+          <span class="material-symbols-outlined text-lg" data-icon="assignment">assignment</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Shift Logs &amp; Tare Exceptions</h3>
+          <p class="text-xs text-slate-500 font-mono">Facility Hub 01 • Last 24 Hours Audited Records</p>
+        </div>
+      </div>
+      <button onclick="closeAuditModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">✕</button>
+    </div>
+
+    <div class="p-6 overflow-y-auto space-y-4 text-xs">
+      <div class="grid grid-cols-3 gap-3 text-center">
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <div class="text-[10px] text-slate-500 uppercase font-bold">Calibration Checks</div>
+          <div class="text-lg font-bold text-slate-900 mt-1">4 / 4</div>
+          <div class="text-[10px] text-teal-600 font-semibold mt-0.5">100% Passed</div>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <div class="text-[10px] text-slate-500 uppercase font-bold">Manual Overrides</div>
+          <div class="text-lg font-bold text-slate-900 mt-1">1 Case</div>
+          <div class="text-[10px] text-amber-600 font-semibold mt-0.5">+0.04 kg Logged</div>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <div class="text-[10px] text-slate-500 uppercase font-bold">Avg Tare Variance</div>
+          <div class="text-lg font-bold text-slate-900 mt-1">0.02%</div>
+          <div class="text-[10px] text-teal-600 font-semibold mt-0.5">Optimal Range</div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl overflow-hidden">
+        <div class="bg-slate-100/80 px-4 py-2.5 font-bold text-slate-700 border-b border-slate-200 flex justify-between">
+          <span>Log Entry &amp; Description</span>
+          <span>Shift / Status</span>
+        </div>
+        <div class="divide-y divide-slate-100 max-h-60 overflow-y-auto">
+          ${store.state.auditLogs.map(log => `
+            <div class="p-3.5 flex items-start justify-between hover:bg-slate-50 transition">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-slate-900">${log.id}</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700">${log.type}</span>
+                  <span class="text-[11px] text-slate-400 font-mono">${log.time}</span>
+                </div>
+                <p class="text-slate-600 mt-1">${log.description}</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Supervisor: <strong class="text-slate-700">${log.supervisor}</strong> · Variance: <strong class="${log.variance === '0.00 kg' ? 'text-teal-700' : 'text-amber-700'}">${log.variance}</strong></p>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${log.status === 'Verified' ? 'bg-teal-50 text-teal-700 border border-teal-200' : log.status === 'Approved' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}">
+                ${log.status}
+              </span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+      <button onclick="store.exportAuditReportCSV()" class="px-4 py-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold rounded-lg text-xs transition flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">download</span> Export Audit CSV
+      </button>
+      <button onclick="showToast('Shift batch verified and signed off', 'success'); closeAuditModal();" class="px-5 py-2 bg-primary hover:bg-[#005049] text-white font-bold rounded-lg text-xs transition shadow-sm">
+        Approve &amp; Sign Off Batch
+      </button>
+    </div>
+  `;
+}
+
+function openPayoutModal() {
+  const modal = document.getElementById('payout-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    renderPayoutModalContent();
+  }
+}
+
+function closePayoutModal() {
+  const modal = document.getElementById('payout-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function renderPayoutModalContent() {
+  const container = document.getElementById('payout-modal-body');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center font-bold">
+          <span class="material-symbols-outlined text-lg" data-icon="account_balance_wallet">account_balance_wallet</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Facility Ledgers &amp; Payout Reconciliation</h3>
+          <p class="text-xs text-slate-500 font-mono">Campus Hub #04 · Merchant Settlement Cycle</p>
+        </div>
+      </div>
+      <button onclick="closePayoutModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">✕</button>
+    </div>
+
+    <div class="p-6 overflow-y-auto space-y-4 text-xs">
+      <div class="bg-gradient-to-r from-[#00685f] to-[#008378] text-white p-5 rounded-2xl shadow-sm flex items-center justify-between">
+        <div>
+          <div class="text-xs text-teal-100 font-medium">Net Campus Payout (Live Cycle)</div>
+          <div class="text-2xl font-bold font-mono mt-1">₹1,42,850.00</div>
+          <div class="text-[11px] text-teal-200 mt-1">Direct NEFT/IMPS to Primary Merchant Account</div>
+        </div>
+        <div class="text-right">
+          <span class="inline-block px-2.5 py-1 rounded-full bg-white/20 text-white font-bold text-[11px] backdrop-blur-sm">
+            Auto-Settled Daily
+          </span>
+          <div class="text-[11px] text-teal-100 font-mono mt-1.5">UTR: #HDFC9481023</div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-xl overflow-hidden">
+        <div class="bg-slate-100/80 px-4 py-2.5 font-bold text-slate-700 border-b border-slate-200 flex justify-between">
+          <span>Batch / Method</span>
+          <span>Gross / Net Settled</span>
+        </div>
+        <div class="divide-y divide-slate-100 max-h-56 overflow-y-auto">
+          ${store.state.payoutLedgers.map(p => `
+            <div class="p-3.5 flex items-center justify-between hover:bg-slate-50 transition">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-slate-900">${p.id}</span>
+                  <span class="text-[11px] text-slate-500 font-mono">${p.date}</span>
+                </div>
+                <p class="text-slate-700 font-medium mt-0.5">${p.method}</p>
+                <p class="text-[10px] text-teal-600 font-semibold mt-0.5">${p.status}</p>
+              </div>
+              <div class="text-right font-mono">
+                <div class="font-bold text-slate-900 text-sm">₹${p.net.toLocaleString('en-IN')}</div>
+                <div class="text-[10px] text-slate-400">Gross: ₹${p.gross.toLocaleString('en-IN')} (Fee: ₹${p.fee})</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+      <button onclick="store.exportPayoutReconciliationCSV()" class="px-4 py-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold rounded-lg text-xs transition flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">download</span> Export Payout CSV
+      </button>
+      <button onclick="closePayoutModal()" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs transition shadow-sm">
+        Close Ledger
+      </button>
+    </div>
+  `;
+}
+
+let editingTierId = null;
+function openEditRateModal(tierId) {
+  editingTierId = tierId;
+  const modal = document.getElementById('edit-rate-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    renderEditRateModalContent();
+  }
+}
+
+function closeEditRateModal() {
+  editingTierId = null;
+  const modal = document.getElementById('edit-rate-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function renderEditRateModalContent() {
+  const container = document.getElementById('edit-rate-modal-body');
+  if (!container) return;
+
+  const tier = store.state.packagesConfig.find(p => p.id === editingTierId) || store.state.packagesConfig[0];
+  if (!tier) return;
+
+  container.innerHTML = `
+    <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div>
+        <h3 class="font-bold text-slate-900 text-base">Edit Package Rates</h3>
+        <p class="text-xs text-slate-500 font-mono">${tier.name} · ${tier.category}</p>
+      </div>
+      <button onclick="closeEditRateModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">✕</button>
+    </div>
+
+    <form onsubmit="submitPackageRateChange(event)" class="p-6 space-y-4 text-xs font-semibold text-slate-700">
+      <div>
+        <label class="block mb-1">Package Tier Name</label>
+        <input type="text" id="edit-tier-name" value="${tier.name}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900" />
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block mb-1">Quota Weight (KG)</label>
+          <input type="number" id="edit-tier-quota" step="0.5" value="${tier.quotaKg}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900" />
+        </div>
+        <div>
+          <label class="block mb-1">Rate Per KG (₹)</label>
+          <input type="number" id="edit-tier-rate" step="1" value="${tier.ratePerKg}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block mb-1">Billing Duration Label</label>
+        <input type="text" id="edit-tier-duration" value="${tier.durationLabel}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900" />
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex justify-end gap-3">
+        <button type="button" onclick="closeEditRateModal()" class="px-4 py-2 text-slate-600 text-sm font-semibold hover:bg-slate-100 rounded-lg">Cancel</button>
+        <button type="submit" class="px-5 py-2 bg-primary hover:bg-[#005049] text-white font-bold rounded-lg text-sm transition shadow-sm">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  `;
+}
+
+function submitPackageRateChange(e) {
+  e.preventDefault();
+  const name = document.getElementById('edit-tier-name')?.value;
+  const quota = parseFloat(document.getElementById('edit-tier-quota')?.value) || 0;
+  const rate = parseFloat(document.getElementById('edit-tier-rate')?.value) || 0;
+  const duration = document.getElementById('edit-tier-duration')?.value;
+
+  const tier = store.state.packagesConfig.find(p => p.id === editingTierId);
+  if (tier) {
+    if (name) tier.name = name;
+    if (quota) tier.quotaKg = quota;
+    if (rate) tier.ratePerKg = rate;
+    tier.totalPrice = Math.round(tier.quotaKg * tier.ratePerKg);
+    if (duration) tier.durationLabel = duration;
+    store.save();
+    showToast(`Rates updated for ${tier.name}!`, 'success');
+  }
+  closeEditRateModal();
+  render();
 }
 
 // Modal Handlers & Dynamic Intake Screen (Matches Page 7 & 8 and Figma Screen 2)

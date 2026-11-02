@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Washify Ops · Campus Laundry Operations & Owner Portal</title>
+  
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0e1726',
+              teal: '#0d9488',
+              tealDark: '#042f2e',
+              surface: '#f8fafc',
+            },
+            "primary": "#00685f",
+            "primary-container": "#008378",
+            "primary-fixed": "#89f5e7",
+            "primary-fixed-dim": "#6bd8cb",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#f4fffc",
+            "on-primary-fixed": "#00201d",
+            "on-primary-fixed-variant": "#005049",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#3d4947",
+            "secondary": "#565e74",
+            "secondary-container": "#dae2fd",
+            "on-secondary-container": "#5c647a",
+            "secondary-fixed": "#dae2fd",
+            "secondary-fixed-dim": "#bec6e0",
+            "on-secondary-fixed": "#131b2e",
+            "on-secondary-fixed-variant": "#3f465c",
+            "outline": "#6d7a77",
+            "outline-variant": "#bcc9c6",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary": "#00685d",
+            "tertiary-container": "#008376",
+            "on-tertiary-container": "#f4fffb",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+          },
+          spacing: {
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased min-h-screen">
+
+  <!-- Main Root Container for Reactive Render -->
+  <div id="app-root"></div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- New Intake Modal (Page 7 & 8 and Figma Screen 2) -->
+  <div id="intake-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div id="intake-modal-body" class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-4xl overflow-hidden animate-slide-up flex flex-col">
+      <!-- Dynamic content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- Audited Adjustment Modal (FR-14, BR-12) -->
+  <div id="adjustment-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div id="adjustment-modal-body" class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden animate-slide-up flex flex-col">
+      <!-- Dynamic content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- Add Customer Modal (FR-01, FR-02) -->
+  <div id="add-customer-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden animate-slide-up flex flex-col">
+      <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Add New Resident Profile</h3>
+          <p class="text-xs text-slate-500">Create profile and assign initial laundry prepaid package.</p>
+        </div>
+        <button onclick="closeAddCustomerModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold">✕</button>
+      </div>
+
+      <form onsubmit="submitNewCustomer(event)" class="p-6 space-y-4 text-xs font-semibold text-slate-700">
+        <div>
+          <label class="block mb-1">Full Name *</label>
+          <input required name="name" type="text" placeholder="e.g. Tanvi Deshmukh" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 focus:bg-white" />
+        </div>
+
+        <div>
+          <label class="block mb-1">Phone Number *</label>
+          <input required name="phone" type="text" placeholder="+91 98765 00000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm font-mono text-slate-900 focus:bg-white" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block mb-1">Hostel *</label>
+            <select name="hostel" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 focus:bg-white">
+              <option value="Hostel A">Hostel A</option>
+              <option value="Hostel B">Hostel B</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1">Room Number *</label>
+            <input required name="room" type="text" placeholder="e.g. A-308" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 focus:bg-white" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block mb-1">College Year</label>
+            <select name="collegeYear" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 focus:bg-white">
+              <option value="1st year">1st year</option>
+              <option value="2nd year" selected>2nd year</option>
+              <option value="3rd year">3rd year</option>
+              <option value="4th year">4th year</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1">Initial Package *</label>
+            <select name="packageType" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-900 focus:bg-white">
+              <option value="Campus 90">Campus 90 (90.00 kg · ₹4,500)</option>
+              <option value="Campus 60">Campus 60 (60.00 kg · ₹3,000)</option>
+              <option value="Campus 30">Campus 30 (30.00 kg · ₹1,500)</option>
+              <option value="Gold Heavy">Gold Heavy (40.00 kg · ₹1,600)</option>
+              <option value="Silver Basic">Silver Basic (25.00 kg · ₹1,125)</option>
+              <option value="Semester Saver">Semester Saver (75.00 kg · ₹2,700)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex justify-end gap-3">
+          <button type="button" onclick="closeAddCustomerModal()" class="px-4 py-2 text-slate-600 text-sm font-semibold hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-5 py-2 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-lg text-sm transition">
+            Create Profile & Package
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shift Audit Logs & Tare Exceptions Modal (from Washify Ops) -->
+  <div id="audit-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div id="audit-modal-body" class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl overflow-hidden animate-slide-up flex flex-col max-h-[90vh]">
+      <!-- Dynamic content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- Facility Ledgers & Payout Reconciliation Modal (from Washify Ops) -->
+  <div id="payout-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div id="payout-modal-body" class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl overflow-hidden animate-slide-up flex flex-col max-h-[90vh]">
+      <!-- Dynamic content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- Edit Package Rates Modal (from Washify Ops) -->
+  <div id="edit-rate-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div id="edit-rate-modal-body" class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-md overflow-hidden animate-slide-up flex flex-col">
+      <!-- Dynamic content rendered by app.js -->
+    </div>
+  </div>
+
+  <!-- App Main Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

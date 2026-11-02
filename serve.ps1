@@ -1,10 +1,12 @@
-# PowerShell Local Static Server for Foldline Frontend
+# PowerShell static server for the BUILT app in dist\ (fallback when Node.js is not installed)
 param(
     [int]$Port = 3000
 )
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $scriptDir) { $scriptDir = (Get-Location).Path }
+$rootDir = Join-Path $scriptDir 'dist'
+if (-not (Test-Path $rootDir)) { Write-Error "dist\ not found. Run 'npm run build' first."; exit 1 }
 
 $url = "http://localhost:$Port/"
 $listener = New-Object System.Net.HttpListener
@@ -24,7 +26,7 @@ try {
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host " Foldline Campus Laundry Management System Frontend" -ForegroundColor White
 Write-Host " Running at: $url" -ForegroundColor Green
-Write-Host " Root Dir:   $scriptDir" -ForegroundColor Gray
+Write-Host " Root Dir:   $rootDir" -ForegroundColor Gray
 Write-Host " Press Ctrl+C in this terminal to stop the server." -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan
 
@@ -39,7 +41,7 @@ while ($listener.IsListening) {
             $relPath = "index.html"
         }
 
-        $filePath = Join-Path $scriptDir $relPath
+        $filePath = Join-Path $rootDir $relPath
 
         if (Test-Path $filePath -PathType Leaf) {
             $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
